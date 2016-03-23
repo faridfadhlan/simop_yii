@@ -1,6 +1,6 @@
 <?php
 
-class KegiatanController extends Controller
+class JeniswaktuController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -32,7 +32,7 @@ class KegiatanController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','datagantt'),
+				'actions'=>array('create','update'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -52,7 +52,7 @@ class KegiatanController extends Controller
 	public function actionView($id)
 	{
 		$this->render('view',array(
-			'kegiatan'=>$this->loadModel($id),
+			'model'=>$this->loadModel($id),
 		));
 	}
 
@@ -62,14 +62,14 @@ class KegiatanController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new Kegiatan;
+		$model=new JenisWaktu;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Kegiatan']))
+		if(isset($_POST['JenisWaktu']))
 		{
-			$model->attributes=$_POST['Kegiatan'];
+			$model->attributes=$_POST['JenisWaktu'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
@@ -91,9 +91,9 @@ class KegiatanController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Kegiatan']))
+		if(isset($_POST['JenisWaktu']))
 		{
-			$model->attributes=$_POST['Kegiatan'];
+			$model->attributes=$_POST['JenisWaktu'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
@@ -122,8 +122,7 @@ class KegiatanController extends Controller
 	 */
 	public function actionIndex()
 	{
-		//$dataProvider=new CActiveDataProvider('Kegiatan');
-                $dataProvider = Kegiatan::model()->findAll();
+		$dataProvider=new CActiveDataProvider('JenisWaktu');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
@@ -134,10 +133,10 @@ class KegiatanController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new Kegiatan('search');
+		$model=new JenisWaktu('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Kegiatan']))
-			$model->attributes=$_GET['Kegiatan'];
+		if(isset($_GET['JenisWaktu']))
+			$model->attributes=$_GET['JenisWaktu'];
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -148,12 +147,12 @@ class KegiatanController extends Controller
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
 	 * @param integer $id the ID of the model to be loaded
-	 * @return Kegiatan the loaded model
+	 * @return JenisWaktu the loaded model
 	 * @throws CHttpException
 	 */
 	public function loadModel($id)
 	{
-		$model=Kegiatan::model()->findByPk($id);
+		$model=JenisWaktu::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -161,19 +160,14 @@ class KegiatanController extends Controller
 
 	/**
 	 * Performs the AJAX validation.
-	 * @param Kegiatan $model the model to be validated
+	 * @param JenisWaktu $model the model to be validated
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='kegiatan-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='jenis-waktu-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
 		}
 	}
-        
-        public function actionDataGantt() {
-            $data = Kegiatan::model()->datagantt();
-            $this->renderPartial("data_gantt", array('data'=>$data));
-        }
 }
