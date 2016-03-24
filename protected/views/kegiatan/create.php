@@ -1,18 +1,44 @@
-<?php
-/* @var $this KegiatanController */
-/* @var $model Kegiatan */
+<section id="content_wrapper">
+    <!-- Start: Topbar -->
+    <header id="topbar">
+        <div class="topbar-left">
+            <ol class="breadcrumb">
+                <li class="crumb-active">
+                    <a href="dashboard.html">Dashboard</a>
+                </li>
+                <li class="crumb-icon">
+                    <a href="dashboard.html">
+                        <span class="glyphicon glyphicon-home"></span>
+                    </a>
+                </li>
+                <li class="crumb-link">
+                    <a href="index.html">Home</a>
+                </li>
+                <li class="crumb-trail">Dashboard</li>
+            </ol>
+        </div>
+        <div class="topbar-right">
 
-$this->breadcrumbs=array(
-	'Kegiatans'=>array('index'),
-	'Create',
-);
+            <div class="topbar-right">
+                    <a href="#" class="btn btn-default btn-sm light fw600 ml10"><span class="fa fa-plus pr5"></span> Tambah Pekerjaan </a>
+                </div>
+        </div>
+    </header>
+    <!-- End: Topbar -->
 
-$this->menu=array(
-	array('label'=>'List Kegiatan', 'url'=>array('index')),
-	array('label'=>'Manage Kegiatan', 'url'=>array('admin')),
-);
-?>
-
-<h1>Create Kegiatan</h1>
-
-<?php $this->renderPartial('_form', array('model'=>$model)); ?>
+    <div id="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel">
+                    <div class="panel-heading">
+                        <span class="panel-title">Tambah Kegiatan</span>
+                    </div>
+                    <div class="panel-body">
+                        <?php echo CHtml::errorSummary($model,NULL, NULL,array('class'=>'alert alert-danger')); ?>
+                        <?php $this->renderPartial("_form", array('model'=>$model, 'jenis_waktus'=>$jenis_waktus));?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

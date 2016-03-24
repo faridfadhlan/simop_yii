@@ -1,18 +1,59 @@
-<?php
-/* @var $this PekerjaanController */
-/* @var $model Pekerjaan */
+<section id="content_wrapper">
+    <!-- Start: Topbar -->
+    <header id="topbar">
+        <div class="topbar-left">
+            <ol class="breadcrumb">
+                <li class="crumb-active">
+                    <a href="dashboard.html">Dashboard</a>
+                </li>
+                <li class="crumb-icon">
+                    <a href="dashboard.html">
+                        <span class="glyphicon glyphicon-home"></span>
+                    </a>
+                </li>
+                <li class="crumb-link">
+                    <a href="index.html">Home</a>
+                </li>
+                <li class="crumb-trail">Dashboard</li>
+            </ol>
+        </div>
+        <div class="topbar-right">
 
-$this->breadcrumbs=array(
-	'Pekerjaans'=>array('index'),
-	'Create',
-);
+            <div class="topbar-right">
+                    <a href="#" class="btn btn-default btn-sm light fw600 ml10"><span class="fa fa-plus pr5"></span> Tambah Kegiatan </a>
+                    
+                </div>
+        </div>
+    </header>
+    <!-- End: Topbar -->
 
-$this->menu=array(
-	array('label'=>'List Pekerjaan', 'url'=>array('index')),
-	array('label'=>'Manage Pekerjaan', 'url'=>array('admin')),
-);
-?>
+    <div id="content">
+        
+        <div class="row">
 
-<h1>Create Pekerjaan</h1>
+            <div class="col-md-12">
 
-<?php $this->renderPartial('_form', array('model'=>$model)); ?>
+                <div class="panel">
+                    <div class="panel-heading">
+                        <span class="panel-title">Tambah Pekerjaan</span>
+                    </div>
+                    <div class="panel-body">
+                        <?php echo CHtml::errorSummary($model,NULL, NULL,array('class'=>'alert alert-danger')); ?>
+                        <?php $this->renderPartial('_form', array(
+                                        'model'=>$model,
+                                        'kegiatans'=>$kegiatans,
+                                        'units'=>$units,
+                                        'pekerjaans'=>$pekerjaans
+                                    )
+                                );?>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+</section>

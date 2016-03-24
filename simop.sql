@@ -110,7 +110,7 @@ CREATE TABLE `kegiatan` (
   PRIMARY KEY (`id`),
   KEY `IX_Relationship1` (`jenis_waktu_id`),
   CONSTRAINT `Relationship1` FOREIGN KEY (`jenis_waktu_id`) REFERENCES `jenis_waktu` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -119,7 +119,7 @@ CREATE TABLE `kegiatan` (
 
 LOCK TABLES `kegiatan` WRITE;
 /*!40000 ALTER TABLE `kegiatan` DISABLE KEYS */;
-INSERT INTO `kegiatan` VALUES (1,'Sensus Ekonomi',1,'2016','2016'),(2,'Ubinan',4,'1','2016'),(3,'Survei Sosial Ekonomi Nasional',5,'1','2016'),(4,'Pemutakhiran Basis Data Terpadu',6,'2016','2016'),(5,'Maintenance Server BPS Provinsi',6,'2016','2016');
+INSERT INTO `kegiatan` VALUES (1,'Sensus Ekonomi',1,'2016','2016'),(2,'Ubinan',4,'1','2016'),(3,'Survei Sosial Ekonomi Nasional',5,'1','2016'),(4,'Pemutakhiran Basis Data Terpadu',6,'2016','2016'),(5,'Maintenance Server BPS Provinsi',6,'2016','2016'),(6,'Listing Sensus Ekonomi',1,'2016','2016');
 /*!40000 ALTER TABLE `kegiatan` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -175,7 +175,7 @@ CREATE TABLE `pekerjaan` (
   CONSTRAINT `Relationship17` FOREIGN KEY (`user_pj_id`) REFERENCES `user` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
   CONSTRAINT `Relationship2` FOREIGN KEY (`kegiatan_id`) REFERENCES `kegiatan` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
   CONSTRAINT `Relationship3` FOREIGN KEY (`unit_target_id`) REFERENCES `unit_target` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -184,7 +184,7 @@ CREATE TABLE `pekerjaan` (
 
 LOCK TABLES `pekerjaan` WRITE;
 /*!40000 ALTER TABLE `pekerjaan` DISABLE KEYS */;
-INSERT INTO `pekerjaan` VALUES (1,'Listing Ubinan Subround I Tahun 2016','2016-01-01','2016-01-31',120,NULL,1,8,8,2,NULL),(2,'Monitoring Entri Pemutakhiran Susenas Semester I Tahun 2016','2016-01-05','2016-01-30',250,NULL,1,17,17,3,NULL),(3,'Memasang Rak Server','2016-01-25','2016-02-01',1,NULL,5,18,18,5,NULL),(4,'Entri Hasil Listing Ubinan Subround I Tahun 2016','2016-01-28','2016-02-01',120,NULL,1,8,8,2,1),(5,'Memasang PC Server ke dalam rak','2016-02-01','2016-02-03',1,NULL,5,26,26,5,3);
+INSERT INTO `pekerjaan` VALUES (1,'Listing Ubinan Subround I Tahun 2016','2016-01-01','2016-01-31',120,NULL,1,8,8,2,NULL),(2,'Monitoring Entri Pemutakhiran Susenas Semester I Tahun 2016','2016-01-05','2016-01-30',250,NULL,1,17,17,3,NULL),(3,'Memasang Rak Server','2016-01-25','2016-02-01',1,NULL,5,18,18,5,NULL),(4,'Entri Hasil Listing Ubinan Subround I Tahun 2016','2016-01-28','2016-02-01',120,NULL,1,8,8,2,1),(5,'Memasang PC Server ke dalam rak','2016-02-01','2016-02-03',1,NULL,5,26,26,5,3),(6,'Alokasi Petugas','2016-01-25','2016-03-15',100,'',1,NULL,NULL,6,NULL);
 /*!40000 ALTER TABLE `pekerjaan` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -349,4 +349,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-03-23 16:04:28
+-- Dump completed on 2016-03-24 16:05:21

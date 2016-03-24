@@ -29,8 +29,8 @@
             </ul>
         </div>
         <div class="topbar-right">
-            <a href="#" class="btn btn-default btn-sm light fw600 ml10"><span class="fa fa-plus pr5"></span> Tambah Kegiatan </a>
-            <a href="#" class="btn btn-default btn-sm light fw600 ml10"><span class="fa fa-plus pr5"></span> Tambah Pekerjaan </a>
+            <?php echo CHtml::link('<span class="fa fa-plus pr5"></span> Tambah Kegiatan', array("kegiatan/create"), array("class"=>"btn btn-default btn-sm light fw600 ml10"));?>
+            <?php echo CHtml::link('<span class="fa fa-plus pr5"></span> Tambah Pekerjaan', array("pekerjaan/create"), array("class"=>"btn btn-default btn-sm light fw600 ml10"));?>
         </div>
     </header>
     <section class="table-layout animated fadeIn">

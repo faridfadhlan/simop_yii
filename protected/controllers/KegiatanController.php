@@ -27,12 +27,8 @@ class KegiatanController extends Controller
 	public function accessRules()
 	{
 		return array(
-			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
-				'users'=>array('*'),
-			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','datagantt'),
+				'actions'=>array('index','view','create','update','datagantt'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -71,11 +67,12 @@ class KegiatanController extends Controller
 		{
 			$model->attributes=$_POST['Kegiatan'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect(array('index'));
 		}
 
 		$this->render('create',array(
 			'model'=>$model,
+                        'jenis_waktus'=>JenisWaktu::model()->findAll()
 		));
 	}
 
