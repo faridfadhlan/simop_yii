@@ -20,9 +20,8 @@
         <div class="topbar-right">
 
             <div class="topbar-right">
-                    <a href="#" class="btn btn-default btn-sm light fw600 ml10"><span class="fa fa-plus pr5"></span> Tambah Kegiatan </a>
-                    
-                </div>
+                <?php echo CHtml::link('<span class="fa fa-plus pr5"></span> Tambah Kegiatan </a>', array("kegiatan/create"), array("class"=>"btn btn-default btn-sm light fw600 ml10"));?>
+            </div>
         </div>
     </header>
     <!-- End: Topbar -->

@@ -4,13 +4,16 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/xampp/htdocs/simop_yii/protected/config/main.php</file>
+            <file>file:/C:/xampp/htdocs/simop_yii/protected/views/pelaksana/create.php</file>
             <file>file:/C:/xampp/htdocs/simop_yii/protected/controllers/PekerjaanController.php</file>
             <file>file:/C:/xampp/htdocs/simop_yii/protected/views/pekerjaan/create.php</file>
             <file>file:/C:/xampp/htdocs/simop_yii/protected/controllers/KegiatanController.php</file>
             <file>file:/C:/xampp/htdocs/simop_yii/protected/views/pekerjaan/_form.php</file>
             <file>file:/C:/xampp/htdocs/simop_yii/protected/views/kegiatan/_form.php</file>
+            <file>file:/C:/xampp/htdocs/simop_yii/protected/controllers/PelaksanaController.php</file>
             <file>file:/C:/xampp/htdocs/simop_yii/protected/models/UnitTarget.php</file>
             <file>file:/C:/xampp/htdocs/simop_yii/protected/views/site/index.php</file>
+            <file>file:/C:/xampp/htdocs/simop_yii/protected/views/pekerjaan/view.php</file>
             <file>file:/C:/xampp/htdocs/simop_yii/protected/views/pekerjaan/update.php</file>
             <file>file:/C:/xampp/htdocs/simop_yii/protected/models/Kegiatan.php</file>
             <file>file:/C:/xampp/htdocs/simop_yii/protected/views/kegiatan/create.php</file>

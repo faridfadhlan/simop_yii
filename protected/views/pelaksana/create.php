@@ -20,22 +20,29 @@
         <div class="topbar-right">
 
             <div class="topbar-right">
-                <?php echo CHtml::link('<span class="fa fa-plus pr5"></span> Tambah Pekerjaan </a>', array("pekerjaan/create"), array("class"=>"btn btn-default btn-sm light fw600 ml10"));?>
-                </div>
+                <?php echo CHtml::link('<span class="fa fa-pencil pr5"></span> Edit Pekerjaan </a>', array("pekerjaan/update"), array("class"=>"btn btn-default btn-sm light fw600 ml10"));?>
+            </div>
         </div>
     </header>
     <!-- End: Topbar -->
 
     <div id="content">
         <div class="row">
+
             <div class="col-md-12">
-                <div class="panel">
+
+                <div class="panel panel-info">
                     <div class="panel-heading">
-                        <span class="panel-title">Tambah Kegiatan</span>
+                        <span class="panel-icon"><i class="fa fa-pencil"></i>
+                        </span>
+                        <span class="panel-title">TAMBAH PELAKSANA PEKERJAAN</span>
                     </div>
-                    <div class="panel-body">
-                        <?php echo CHtml::errorSummary($model,NULL, NULL,array('class'=>'alert alert-danger')); ?>
-                        <?php $this->renderPartial("_form", array('model'=>$model, 'jenis_waktus'=>$jenis_waktus));?>
+                    <div class="panel-body pb5">
+                        <h4>Nama Pekerjaan</h4>
+                        <p class="text-muted"><?php echo $pekerjaan->nama;?></p>
+
+                        <hr class="short br-lighter">
+                        <?php echo $this->renderPartial("_form", array("model"=>$model, "bidangs"=>$bidangs));?>
                     </div>
                 </div>
             </div>

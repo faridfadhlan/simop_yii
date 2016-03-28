@@ -1,6 +1,6 @@
 <?php
 
-class PekerjaanController extends Controller
+class PelaksanaController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -27,8 +27,12 @@ class PekerjaanController extends Controller
 	public function accessRules()
 	{
 		return array(
+			array('allow',  // allow all users to perform 'index' and 'view' actions
+				'actions'=>array('index','view'),
+				'users'=>array('*'),
+			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('index','view','create','update'),
+				'actions'=>array('create','update','getDropdownSeksi', 'getDropdownUser'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -48,7 +52,7 @@ class PekerjaanController extends Controller
 	public function actionView($id)
 	{
 		$this->render('view',array(
-			'pekerjaan'=>$this->loadModel($id),
+			'model'=>$this->loadModel($id),
 		));
 	}
 
@@ -56,27 +60,25 @@ class PekerjaanController extends Controller
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
-	public function actionCreate()
+	public function actionCreate($pekerjaan_id)
 	{
-		$model=new Pekerjaan;
+                $pekerjaan = Pekerjaan::model()->find($pekerjaan_id);
+		$model=new PelaksanaPekerjaan;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Pekerjaan']))
+		if(isset($_POST['PelaksanaPekerjaan']))
 		{
-			$model->attributes=$_POST['Pekerjaan'];
-                        $model->user_creator_id = Yii::app()->user->id;
-                        $model->user_pj_id = Yii::app()->user->id;
+			$model->attributes=$_POST['PelaksanaPekerjaan'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
 
 		$this->render('create',array(
-			'model'=>$model,
-                        'kegiatans'=>  Kegiatan::model()->findAll(),
-                        'units'=>  UnitTarget::model()->findAll(),
-                        'pekerjaans'=>  Pekerjaan::model()->findAll()
+                    'model'=>$model,
+                    'bidangs'=>  Bidang::model()->findAll(),
+                    'pekerjaan'=>$pekerjaan
 		));
 	}
 
@@ -92,18 +94,15 @@ class PekerjaanController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Pekerjaan']))
+		if(isset($_POST['PelaksanaPekerjaan']))
 		{
-			$model->attributes=$_POST['Pekerjaan'];
+			$model->attributes=$_POST['PelaksanaPekerjaan'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
 
 		$this->render('update',array(
 			'model'=>$model,
-                        'kegiatans'=>  Kegiatan::model()->findAll(),
-                        'units'=>  UnitTarget::model()->findAll(),
-                        'pekerjaans'=>  Pekerjaan::model()->findAll()
 		));
 	}
 
@@ -126,7 +125,7 @@ class PekerjaanController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Pekerjaan');
+		$dataProvider=new CActiveDataProvider('PelaksanaPekerjaan');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
@@ -137,10 +136,10 @@ class PekerjaanController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new Pekerjaan('search');
+		$model=new PelaksanaPekerjaan('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Pekerjaan']))
-			$model->attributes=$_GET['Pekerjaan'];
+		if(isset($_GET['PelaksanaPekerjaan']))
+			$model->attributes=$_GET['PelaksanaPekerjaan'];
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -151,12 +150,12 @@ class PekerjaanController extends Controller
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
 	 * @param integer $id the ID of the model to be loaded
-	 * @return Pekerjaan the loaded model
+	 * @return PelaksanaPekerjaan the loaded model
 	 * @throws CHttpException
 	 */
 	public function loadModel($id)
 	{
-		$model=Pekerjaan::model()->findByPk($id);
+		$model=PelaksanaPekerjaan::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -164,14 +163,34 @@ class PekerjaanController extends Controller
 
 	/**
 	 * Performs the AJAX validation.
-	 * @param Pekerjaan $model the model to be validated
+	 * @param PelaksanaPekerjaan $model the model to be validated
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='pekerjaan-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='pelaksana-pekerjaan-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
 		}
 	}
+        
+        public function actionGetDropdownSeksi() {
+            if(isset($_POST['bidang_id'])):
+                $data=CHtml::listData(Seksi::model()->findAll('bidang_id=:bidang_id',array(':bidang_id'=>$_POST['bidang_id'])),'id','nama_seksi'); 
+                echo "<option value=''>Pilih Seksi...</option>";
+                foreach($data as $id=>$nama_bidang)
+                    echo CHtml::tag('option', array('value'=>$id),CHtml::encode($nama_bidang),true);
+            endif;
+                
+        }
+        
+        public function actionGetDropdownUser() {
+            if(isset($_POST['seksi_id'])):
+                $data=CHtml::listData(User::model()->findAll('seksi_id=:seksi_id',array(':seksi_id'=>$_POST['seksi_id'])),'id','nama'); 
+                echo "<option value=''>Pilih Nama Pelaksana...</option>";
+                foreach($data as $id=>$nama)
+                    echo CHtml::tag('option', array('value'=>$id),CHtml::encode($nama),true);
+            endif;
+                
+        }
 }

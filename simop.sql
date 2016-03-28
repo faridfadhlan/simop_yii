@@ -184,7 +184,7 @@ CREATE TABLE `pekerjaan` (
 
 LOCK TABLES `pekerjaan` WRITE;
 /*!40000 ALTER TABLE `pekerjaan` DISABLE KEYS */;
-INSERT INTO `pekerjaan` VALUES (1,'Listing Ubinan Subround I Tahun 2016','2016-01-01','2016-01-31',120,NULL,1,8,8,2,NULL),(2,'Monitoring Entri Pemutakhiran Susenas Semester I Tahun 2016','2016-01-05','2016-01-30',250,NULL,1,17,17,3,NULL),(3,'Memasang Rak Server','2016-01-25','2016-02-01',1,NULL,5,18,18,5,NULL),(4,'Entri Hasil Listing Ubinan Subround I Tahun 2016','2016-01-28','2016-02-01',120,NULL,1,8,8,2,1),(5,'Memasang PC Server ke dalam rak','2016-02-01','2016-02-03',1,NULL,5,26,26,5,3),(6,'Alokasi Petugas','2016-01-25','2016-03-15',100,'',1,NULL,NULL,6,NULL);
+INSERT INTO `pekerjaan` VALUES (1,'Listing Ubinan Subround I Tahun 2016','2016-01-01','2016-01-31',120,NULL,1,8,8,2,NULL),(2,'Monitoring Entri Pemutakhiran Susenas Semester I Tahun 2016','2016-01-05','2016-01-30',250,NULL,1,17,17,3,NULL),(3,'Memasang Rak Server','2016-01-25','2016-02-01',1,NULL,5,18,18,5,NULL),(4,'Entri Hasil Listing Ubinan Subround I Tahun 2016','2016-01-28','2016-02-01',120,NULL,1,8,8,2,1),(5,'Memasang PC Server ke dalam rak','2016-02-01','2016-02-03',1,NULL,5,26,26,5,3),(6,'Alokasi Petugas','2016-01-25','2016-03-15',100,'',1,18,18,6,NULL);
 /*!40000 ALTER TABLE `pekerjaan` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -349,4 +349,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-03-24 16:05:21
+-- Dump completed on 2016-03-28 16:01:17

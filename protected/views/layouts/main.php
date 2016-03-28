@@ -6,11 +6,12 @@
     <meta charset="utf-8">
     <title><?php echo CHtml::encode($this->pageTitle);?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Admin Forms CSS -->
-    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->baseUrl;?>/public/assets/admin-tools/admin-forms/css/admin-forms.css">
+    
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->baseUrl;?>/public/assets/fonts/icomoon/icomoon.css">
     <!-- Theme CSS -->
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->baseUrl;?>/public/assets/skin/default_skin/css/theme.css">
+    <!-- Admin Forms CSS -->
+    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->baseUrl;?>/public/assets/admin-tools/admin-forms/css/admin-forms.css">
     <!-- Favicon -->
     <link rel="shortcut icon" href="<?php echo Yii::app()->baseUrl;?>/public/assets/img/favicon.ico">
 </head>

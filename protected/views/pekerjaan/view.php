@@ -124,21 +124,16 @@
                                 </tr>
                             </tbody>
                         </table>
+                        <?php echo CHtml::link('<span class="fa fa-plus pr5"></span> Tambah Petugas </a>', array("pelaksana/create", "pekerjaan_id"=>$pekerjaan->id), array("class"=>"btn btn-default btn-sm light fw600 ml10"));?>
 
                         <hr class="short br-lighter">
 
                         <h4>Pelaku Kegiatan</h4>
                         <p class="text-muted pb10"> Bidang Distribusi, Bidang IPDS
                         </p>
-
                     </div>
                 </div>
-
-
             </div>
-
-
-        </div>
-
+        </di
     </div>
 </section>
